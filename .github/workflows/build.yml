@@ -1,25 +1,16 @@
-name: Build Backend and Frontend
+name: Build Console App
 
 on:
   pull_request:
     branches:
       - main
-      
+
 permissions:
   contents: read
 
 jobs:
   build:
-    name: Build All Projects
     runs-on: ubuntu-latest
-
-    strategy:
-      fail-fast: false
-      matrix:
-        project:
-          - SampleApp/BackEnd/BackEnd.csproj
-          - SampleApp/FrontEnd/FrontEnd.csproj
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -29,8 +20,5 @@ jobs:
         with:
           dotnet-version: '10.0.x'
 
-      - name: Restore dependencies
-        run: dotnet restore ${{ matrix.project }}
-
-      - name: Build project
-        run: dotnet build ${{ matrix.project }} --no-restore --configuration Release
+      - name: Build console app
+        run: dotnet build ConsoleApp/ConsoleApp.csproj --configuration Release
