@@ -1,6 +1,7 @@
 {
     "name": "C# Learning Lab",
     "image": "mcr.microsoft.com/dotnet/sdk:10.0",
+    "remoteUser": "vscode",
     "customizations": {
         "vscode": {
             "extensions": [
