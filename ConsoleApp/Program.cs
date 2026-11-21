@@ -1,8 +1,13 @@
-﻿console.writeline("hello, world!");
+Console.WriteLine("hello, world!");
 
-console.write("what is your favorite color? ");
-string favoritecolor = console.readline();
-console.writeline("oh, i love " + favoritecolor + " too!");
+Console.Write("what is your favorite color? ");
+string? favoritecolor = Console.ReadLine();
+Console.WriteLine("oh, i love " + favoritecolor + " too!");
 
-string age = console.readline();//Does not convert to int automatically
-console.writeline(age + 1); //Prints ##1 !!
+string? age = Console.ReadLine();//Does not convert to int automatically
+Console.WriteLine(age + 1); //Prints ##1 !!
+
+string first = "Hello";
+string last = "world";
+string message = first + ", " + last + "!";
+Console.WriteLine(message);
