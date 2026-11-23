@@ -20,8 +20,8 @@ switch (ageInput)
     case string input when string.IsNullOrWhiteSpace(input):
         Console.WriteLine("You pressed Enter without typing an age.");
         break;
-    case string input when int.TryParse(input, out int age):
-        Console.WriteLine($"Next year you will be {age + 1}.");
+    case string input when int.TryParse(input, out int ageAuto):
+        Console.WriteLine($"Next year you will be {ageAuto + 1}.");
         break;
     default:
         Console.WriteLine("Please enter a whole number.");
@@ -79,7 +79,80 @@ Console.WriteLine(messageCount + 1);   // Output: 6
 
 var nameVar = "Alice";           // C# sees a string, so name is string
 var ageVar = 25;                 // C# sees a whole number, so age is int
-// A fractional number is double by default. Add m when var should infer decimal.
+// Without m or another decimal context, a fractional number is double by default.
+// var can infer decimal when the value already has decimal type.
 var price = 19.99;              // price is double
 var decimalPrice = 19.99m;      // decimalPrice is decimal
-Console.WriteLine($"var values: {nameVar}, {ageVar}, {price}, {decimalPrice}");
+decimal sourcePrice = 10.00m;
+var copiedPrice = sourcePrice;  // copiedPrice is decimal
+Console.WriteLine($"var values: {nameVar}, {ageVar}, {price}, {decimalPrice}, {copiedPrice}");
+
+
+int score = 95;
+decimal priceDecimal = 19.99m;
+double average = 87.5;
+
+
+int a = 7;
+int b = 2;
+Console.WriteLine(a / b);        // Output: 3 (integer division truncates)
+
+decimal c = 7m;
+decimal d = 2m;
+Console.WriteLine(c / d);        // Output: 3.5 (keeps the decimal)
+
+
+Console.WriteLine(10 % 2);   // Output: 0 (10 is even)
+Console.WriteLine(11 % 2);   // Output: 1 (11 is odd)
+
+
+int standard = 2 + 3 * 4;      // Multiplication first: 14
+int forced = (2 + 3) * 4;      // Parentheses first: 20
+Console.WriteLine($"standard: {standard}, forced: {forced}");
+
+score = 50;
+score = score + 10;    // Standard way: score is 60
+score += 10;           // Shorthand: score is 70
+
+
+int count = 5;
+count++;                       // Same as count = count + 1
+Console.WriteLine(count);      // Output: 6
+
+count--;                       // Same as count = count - 1
+Console.WriteLine(count);      // Output: 5
+
+a = 5;
+Console.WriteLine(a++);   // Output: 5 (uses old value, then increments)
+Console.WriteLine(a);     // Output: 6 (a was incremented)
+
+b = 5;
+Console.WriteLine(++b);   // Output: 6 (increments first, then uses new value)
+Console.WriteLine(b);     // Output: 6
+
+int result = 7 / 2;
+Console.WriteLine(result);     // Output: 3 (not 3.5)
+
+decimal result2 = 7m / 2m;
+Console.WriteLine(result2);     // Output: 3.5
+
+
+Console.Write("Enter your age: ");
+ageInput = Console.ReadLine();
+int age = Convert.ToInt32(ageInput);
+int nextYear = age + 1;
+Console.WriteLine($"Next year you'll be {nextYear}");
+
+
+age = int.Parse("25");
+decimal priceOfMoney = decimal.Parse("19.99");
+average = double.Parse("87.5");
+
+priceDecimal = 19.99m;
+wholePrice = (int)priceDecimal;         // Casts to int: 19 (decimal dropped)
+Console.WriteLine(wholePrice);       // Output: 19
+
+int firstInt = 7;
+int secondInt = 2;
+decimal resultInDecimal = (decimal)firstInt / (decimal)secondInt;
+Console.WriteLine(resultInDecimal);           // Output: 3.5
