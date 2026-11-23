@@ -12,21 +12,20 @@ Console.Write("How old are you? ");
 string? ageInput = Console.ReadLine();
 // The ? belongs after the type: the variable may hold a string or null.
 // TryParse converts valid text and returns false instead of throwing on bad input.
-if (ageInput is null)
+switch (ageInput)
 {
-    Console.WriteLine("No input was received.");
-}
-else if (string.IsNullOrWhiteSpace(ageInput))
-{
-    Console.WriteLine("You pressed Enter without typing an age.");
-}
-else if (int.TryParse(ageInput, out int age))
-{
-    Console.WriteLine($"Next year you will be {age + 1}.");
-}
-else
-{
-    Console.WriteLine("Please enter a whole number.");
+    case null:
+        Console.WriteLine("No input was received.");
+        break;
+    case string input when string.IsNullOrWhiteSpace(input):
+        Console.WriteLine("You pressed Enter without typing an age.");
+        break;
+    case string input when int.TryParse(input, out int age):
+        Console.WriteLine($"Next year you will be {age + 1}.");
+        break;
+    default:
+        Console.WriteLine("Please enter a whole number.");
+        break;
 }
 
 string first = "Hello";
@@ -60,3 +59,27 @@ if (name is not null)
         Console.WriteLine(greeting);
     }
 }
+
+name = "Alice";
+// int stores whole numbers. double is a common choice for measurements such
+// as temperature, similar to Java's double type.
+int ageInt = 25;
+double temperature = 98.6;
+// The m suffix also works with a whole-number decimal value.
+decimal wholePrice = 20m;
+// A decimal literal with digits after the point needs the m suffix.
+decimal exactPrice = 19.99m;
+// bool stores one of two values: true or false.
+bool isRaining = true;
+Console.WriteLine($"Age: {ageInt}, temperature: {temperature}, prices: {wholePrice}/{exactPrice}, raining: {isRaining}");
+
+
+int messageCount = 5;
+Console.WriteLine(messageCount + 1);   // Output: 6
+
+var nameVar = "Alice";           // C# sees a string, so name is string
+var ageVar = 25;                 // C# sees a whole number, so age is int
+// A fractional number is double by default. Add m when var should infer decimal.
+var price = 19.99;              // price is double
+var decimalPrice = 19.99m;      // decimalPrice is decimal
+Console.WriteLine($"var values: {nameVar}, {ageVar}, {price}, {decimalPrice}");
