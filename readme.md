@@ -4,7 +4,7 @@ A place to learn and practice C# and .NET, starting with a simple console app.
 
 ## Requirements
 
-- [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
+- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) (also builds and runs with .NET 9 or .NET 10 SDKs)
 - [Visual Studio Code](https://code.visualstudio.com/) with the [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit) extension for editing and debugging
 
 The included dev container provides the SDK and VS Code extension when using GitHub Codespaces or VS Code Dev Containers.
