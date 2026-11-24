@@ -155,4 +155,38 @@ Console.WriteLine(wholePrice);       // Output: 19
 int firstInt = 7;
 int secondInt = 2;
 decimal resultInDecimal = (decimal)firstInt / (decimal)secondInt;
-Console.WriteLine(resultInDecimal);           // Output: 3.5
+// :C formats the decimal as currency using the current culture.
+Console.WriteLine($"{resultInDecimal:C}");           // Output: a currency value such as $3.50
+
+// Arrays have a fixed size and use zero-based indexes, like Java arrays.
+int[] scores = { 80, 95, 72 };
+for (int index = 0; index < scores.Length; index++)
+{
+    Console.WriteLine($"score {index}: {scores[index]}");
+}
+
+// foreach visits each item without managing an index.
+foreach (int scoreItem in scores)
+{
+    Console.WriteLine($"score: {scoreItem}");
+}
+
+int countdown = 3;
+while (countdown > 0)
+{
+    Console.WriteLine(countdown);
+    countdown--;
+}
+
+// Dictionary<TKey, TValue> stores key-value pairs, like Java Map.
+Dictionary<string, int> scoresByName = new()
+{
+    ["Alice"] = 95,
+    ["Bob"] = 80
+};
+Console.WriteLine($"Alice's score: {scoresByName["Alice"]}");
+
+// HashSet<T> stores unique values, like Java Set.
+HashSet<string> colors = new() { "red", "blue", "red" };
+colors.Add("green");
+Console.WriteLine($"Unique colors: {colors.Count}");
