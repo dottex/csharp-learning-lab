@@ -72,5 +72,23 @@ internal static class CollectionExamples
         {
             Console.WriteLine($"{player.Name}: {player.Score}");
         }
+
+        // A dictionary can store records as its values.
+        Dictionary<string, Player> playersByName = new()
+        {
+            ["Alice"] = new Player("Alice", 95)
+        };
+
+        // Add or replace a value by assigning it to a key.
+        playersByName["Bob"] = new Player("Bob", 80);
+
+        // TryAdd adds only when the key does not already exist.
+        bool addedPlayer = playersByName.TryAdd("Carol", new Player("Carol", 88));
+        Console.WriteLine($"Carol added: {addedPlayer}");
+
+        foreach (KeyValuePair<string, Player> entry in playersByName)
+        {
+            Console.WriteLine($"{entry.Key}: {entry.Value.Score}");
+        }
     }
 }
